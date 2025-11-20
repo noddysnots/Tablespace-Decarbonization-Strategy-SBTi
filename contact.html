@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Grow Green Farming</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+     <style>
+        /* --- Base & Header Styles (Assume these are partially in styles.css) --- */
+        body { font-family: 'Poppins', sans-serif; color: #333; line-height: 1.6; }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 15px; }
+        h1, h2, h3, h4 { color: var(--primary-dark, #2e7d32); font-weight: 600; }
+        .btn { padding: 10px 25px; border-radius: 25px; text-decoration: none; display: inline-block; font-weight: 500; transition: all 0.3s ease; border: none; cursor: pointer; text-align: center;}
+        .btn.primary { background-color: var(--primary-color, #4CAF50); color: white; border-radius: 6px; /* Match form buttons */ padding: 12px 30px; font-size: 1em;}
+        .btn.primary:hover { background-color: var(--primary-dark, #2e7d32); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .section-padding { padding: 80px 0; } /* Consistent padding */
+        .section-bg-light { background-color: #f9f9f9; } /* Light background */
+        .section-title { text-align: center; margin-bottom: 50px; font-size: 2.5em; font-weight: 700; }
+
+        /* Header styles */
+         header { background-color: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; }
+         header .container { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; padding-bottom: 10px; }
+         header .logo h1 { color: var(--primary-color); margin: 0; font-size: 1.8em; font-weight: 700; }
+         header nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 10px; }
+         header nav a { text-decoration: none; color: #444; font-weight: 500; padding: 10px 15px; border-radius: 6px; position: relative; transition: color 0.3s ease, background-color 0.3s ease; font-size: 1em; white-space: nowrap; }
+         header nav a:hover, header nav a.active { color: var(--primary-color); background-color: #e8f5e9; font-weight: 600; }
+         @media (max-width: 992px) { header nav ul { gap: 5px; } header nav a { padding: 8px 10px; font-size: 0.95em; } }
+         @media (max-width: 768px) { header .container { flex-direction: column; gap: 10px;} header nav ul { gap: 10px; flex-wrap: wrap; justify-content: center;} header nav a { font-size: 1em; } }
+
+        /* --- Page Header --- */
+         .page-header { /* Standard Banner Style */
+             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/contact-banner.jpg') center/cover no-repeat; /* Replace with relevant image */
+             padding: 80px 0;
+             text-align: center;
+             color: white;
+         }
+         .page-header h1 { font-size: 3em; margin-bottom: 10px; color: white; font-weight: 700; }
+         .page-header p { font-size: 1.3em; color: #eee; max-width: 700px; margin: 0 auto; font-weight: 400; }
+
+         /* --- Contact Intro --- */
+         .contact-intro { text-align: center; padding: 60px 0 40px; } /* Padding top/bottom */
+         .contact-intro h2 { font-size: 2.2em; margin-bottom: 15px; }
+         .contact-intro p { max-width: 800px; margin: 0 auto; color: #555; font-size: 1.1em; line-height: 1.7;}
+
+        /* --- Contact Section --- */
+         .contact-section { padding-bottom: 80px; } /* Add padding bottom */
+         .contact-grid {
+             display: grid;
+             grid-template-columns: 1fr 1.5fr; /* Adjust grid ratio if needed (Info | Form) */
+             gap: 50px; /* Increased gap */
+             align-items: flex-start; /* Align items top */
+             background-color: #ffffff;
+             padding: 40px;
+             border-radius: 10px;
+             box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+             border: 1px solid #eee;
+         }
+         .contact-info h3 { /* Section Subtitle */
+             font-size: 1.8em;
+             margin-top: 0;
+             margin-bottom: 30px;
+             padding-bottom: 10px;
+             border-bottom: 1px solid #eee;
+             color: var(--primary-dark);
+         }
+         .info-card { /* Styling for each contact detail block */
+             background-color: #f9f9f9;
+             padding: 25px;
+             border-radius: 8px;
+             margin-bottom: 25px;
+             display: flex;
+             align-items: flex-start; /* Align icon top */
+             gap: 20px; /* Space between icon and text */
+             border-left: 4px solid var(--primary-color);
+         }
+         .info-card i {
+             font-size: 1.8em; /* Icon size */
+             color: var(--primary-color);
+             width: 40px; /* Fixed width */
+             text-align: center;
+             margin-top: 3px; /* Align icon slightly lower */
+         }
+         .info-card-content h4 { /* Title within card */
+             margin: 0 0 8px 0;
+             font-size: 1.25em;
+             color: var(--primary-dark);
+             font-weight: 600;
+         }
+         .info-card-content p {
+             margin: 0;
+             color: #555;
+             line-height: 1.6;
+             font-size: 1em;
+         }
+         .info-card-content a { /* Style links within info card */
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+         }
+         .info-card-content a:hover { text-decoration: underline; }
+
+         .social-media { margin-top: 40px; }
+         .social-media h3 { font-size: 1.4em; margin-bottom: 20px; color: var(--primary-dark); }
+         .social-icons a {
+             display: inline-block;
+             margin-right: 15px; /* Spacing between icons */
+             color: var(--primary-dark);
+             font-size: 1.6em; /* Icon size */
+             transition: color 0.3s ease, transform 0.3s ease;
+         }
+         .social-icons a:hover {
+             color: var(--primary-color);
+             transform: scale(1.1); /* Slight zoom on hover */
+         }
+
+         .contact-form-container h3 { /* Section Subtitle */
+             font-size: 1.8em;
+             margin-top: 0;
+             margin-bottom: 30px;
+             padding-bottom: 10px;
+             border-bottom: 1px solid #eee;
+             color: var(--primary-dark);
+         }
+         .contact-form .form-row { display: flex; gap: 20px; }
+         .contact-form .form-group { margin-bottom: 25px; flex: 1; } /* Increased margin */
+         .contact-form label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.95em; color: #333;}
+         .contact-form label span[style*="color:red"] { color: red; margin-left: 2px; }
+         .contact-form input, .contact-form select, .contact-form textarea {
+             width: 100%;
+             padding: 14px 18px; /* Slightly more padding */
+             border: 1px solid #ccc;
+             border-radius: 6px;
+             font-size: 1em;
+             transition: border-color 0.3s, box-shadow 0.3s;
+             background-color: #fff;
+         }
+        .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15);
+        }
+         .contact-form textarea { resize: vertical; }
+         .contact-form button { padding: 14px 35px; font-size: 1.1em; font-weight: 600;} /* Larger button */
+         #form-status { margin-top: 20px; font-weight: bold; font-size: 1em; text-align: center; }
+
+         /* Responsive Contact Grid */
+         @media (max-width: 992px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; padding: 30px;}
+            .contact-info h3, .contact-form-container h3 { font-size: 1.6em; }
+         }
+         @media (max-width: 768px) {
+             .contact-form .form-row { flex-direction: column; gap: 0; }
+             .contact-form .form-group { margin-bottom: 20px; } /* Adjust margin for stacked */
+             .info-card { padding: 20px; }
+             .info-card-content h4 { font-size: 1.15em; }
+             .info-card i { font-size: 1.6em; }
+         }
+
+        /* --- Map Section --- */
+        .map-section { padding: 80px 0; background-color: #f9f9f9; }
+        .map-section h2 { text-align: center; margin-bottom: 40px; font-size: 2.2em; }
+        .map-container {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+            height: 450px; /* Adjust height as needed */
+        }
+        .map-container iframe {
+             width: 100%;
+             height: 100%;
+             border: 0;
+        }
+
+        /* Footer Styles (Assume from index.html or styles.css) */
+        footer { background-color: #333; color: #ccc; padding-top: 60px; padding-bottom: 20px; }
+         .footer-columns { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; margin-bottom: 40px; }
+         .footer-column { flex: 1; min-width: 200px; }
+         .footer-column h3 { color: #ffffff; margin-bottom: 20px; font-size: 1.3em; position: relative; padding-bottom: 10px; }
+         .footer-column h3::after { content: ''; position: absolute; width: 40px; height: 2px; bottom: 0; left: 0; background-color: var(--primary-color); }
+         .footer-column p { color: #bbb; line-height: 1.7; margin-bottom: 10px; }
+         .footer-column ul { list-style: none; padding: 0; margin: 0; }
+         .footer-column li { margin-bottom: 10px; }
+         .footer-column a { color: #bbb; text-decoration: none; transition: color 0.3s ease; }
+         .footer-column a:hover { color: var(--primary-color); }
+         .footer-column i.fas { margin-right: 8px; width: 15px; text-align: center; color: var(--primary-color); }
+         .footer-bottom { border-top: 1px solid #444; padding-top: 20px; text-align: center; font-size: 0.9em; color: #aaa; }
+         .footer-links { margin-top: 10px; }
+         .footer-links a { color: #aaa; text-decoration: none; margin: 0 10px; transition: color 0.3s ease; }
+         .footer-links a:hover { color: var(--primary-color); }
+          @media (max-width: 992px) { .footer-columns { flex-direction: column; align-items: center; text-align: center; } .footer-column { min-width: 100%; } .footer-column h3::after { left: 50%; transform: translateX(-50%); } }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                 <h1><a href="index.html" style="text-decoration:none; color: var(--primary-color);">Grow Green Farming</a></h1>
+            </div>
+            <nav>
+                <ul> <!-- New Order -->
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="farmers.html">Farmers</a></li>
+                    <li><a href="equipment-owners.html">Equipment Owners</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html" class="active">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Get In Touch</h1> <!-- Updated Heading -->
+            <p>We're here to help. Reach out with your questions, inquiries, or feedback.</p>
+        </div>
+    </section>
+
+    <section class="contact-intro">
+        <div class="container">
+            <h2>Let's Connect & Grow Together</h2> <!-- Updated Heading -->
+            <p>Whether you have questions about our diverse agricultural services, need assistance with booking equipment or consultations, want to explore partnership opportunities as an equipment owner, or simply wish to provide feedback, our dedicated team is ready to assist you. Please use the form below or contact us directly via phone or email.</p>
+        </div>
+    </section>
+
+    <section class="contact-section section-padding"> <!-- Added padding -->
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt fa-fw"></i>
+                        <div class="info-card-content">
+                            <h4>Our Location</h4>
+                            <p>[Your Full Address Here]<br>City, State - PinCode, India</p> <!-- Replace placeholder -->
+                            <p><a href="#map-section" title="View on Map">View on Map</a></p> <!-- Link to map section -->
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-phone-alt fa-fw"></i> <!-- Use phone-alt -->
+                         <div class="info-card-content">
+                            <h4>Call Us</h4>
+                            <p><a href="tel:+91XXXXXXXXXX">+91 XXXXXXXXXX</a></p> <!-- Replace placeholder, make clickable -->
+                            <p><a href="tel:+91YYYYYYYYYY">+91 YYYYYYYYYY (Support)</a></p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-envelope fa-fw"></i>
+                        <div class="info-card-content">
+                            <h4>Email Us</h4>
+                            <p><a href="mailto:info@growgreenfarming.com">info@growgreenfarming.com</a></p> <!-- Replace placeholder, make clickable -->
+                            <p><a href="mailto:support@growgreenfarming.com">support@growgreenfarming.com</a></p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-clock fa-fw"></i>
+                        <div class="info-card-content">
+                            <h4>Operating Hours</h4>
+                            <p>Monday - Saturday: <strong>9:00 AM - 6:00 PM</strong></p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                    </div>
+                    <div class="social-media">
+                        <h3>Connect With Us</h3>
+                        <div class="social-icons">
+                            <!-- Add actual links to your social media profiles -->
+                            <a href="#" target="_blank" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" target="_blank" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a> <!-- Add WhatsApp number -->
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <h3>Send Us a Message</h3>
+                    <form id="contact-form" class="contact-form" action="MAILTO:info@growgreenfarming.com" method="post" enctype="text/plain"> <!-- Simple mailto action (requires user email client) -->
+                    <!-- NOTE: For reliable server-side processing, replace mailto with a proper backend script URL in 'action' and adjust 'method' -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name <span style="color:red;">*</span></label>
+                                <input type="text" id="name" name="name" required placeholder="e.g., John Doe">
+                            </div>
+                             <div class="form-group">
+                                <label for="phone">Phone Number <span style="color:red;">*</span></label>
+                                <input type="tel" id="phone" name="phone" required placeholder="e.g., +91 XXXXXXXXXX">
+                            </div>
+                        </div>
+                         <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address <span style="color:red;">*</span></label>
+                                <input type="email" id="email" name="email" required placeholder="e.g., john.doe@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject <span style="color:red;">*</span></label>
+                                <select id="subject" name="subject" required>
+                                    <option value="" disabled selected>-- Select a Subject --</option>
+                                    <option value="Equipment Rental Inquiry">Equipment Rental Inquiry</option>
+                                    <option value="Equipment Owner Partnership">Equipment Owner Partnership</option>
+                                     <option value="Soil Testing Service Inquiry">Soil Testing Service Inquiry</option>
+                                     <option value="Timber Plantation Inquiry">Timber Plantation Inquiry</option>
+                                    <option value="Training Programs Inquiry">Training Programs Inquiry</option>
+                                    <option value="General Inquiry">General Inquiry</option>
+                                    <option value="Feedback/Suggestion">Feedback/Suggestion</option>
+                                    <option value="Support Request">Support Request</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message <span style="color:red;">*</span></label>
+                            <textarea id="message" name="message" rows="7" required placeholder="Please describe your inquiry in detail..."></textarea>
+                        </div>
+                        <button type="submit" class="btn primary"><i class="fas fa-paper-plane"></i> Send Message</button>
+                        <p id="form-status"></p> <!-- Status message area -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map-section" class="map-section"> <!-- Added ID for internal linking -->
+        <div class="container">
+            <h2>Find Us On The Map</h2>
+            <div class="map-container">
+                <!-- *** IMPORTANT: Replace this iframe src with the embed code for YOUR actual location from Google Maps *** -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112138.00138009113!2d77.0230986!3d28.49695395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19d5aaaaaaab%3A0x45e74a7f1f8a9f9e!2sGurugram%2C%20Haryana!5e0!3m2!1sen!2sin!4v1678886451234!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                 <div class="footer-column"> <h3>Grow Green Farming</h3> <p>Empowering India's smallholder farmers...</p> </div>
+                 <div class="footer-column"> <h3>Quick Links</h3> <ul> <li><a href="index.html">Home</a></li> <li><a href="farmers.html">Farmers</a></li> <li><a href="equipment-owners.html">Equipment Owners</a></li> <li><a href="services.html">Our Services</a></li> <li><a href="about.html">About Us</a></li> <li><a href="contact.html">Contact Us</a></li> </ul> </div>
+                 <div class="footer-column"> <h3>Featured Services</h3> <ul> <li><a href="services.html#farm-mechanization">Equipment Rental</a></li> <li><a href="services.html#soil-testing">Soil Testing</a></li> <li><a href="services.html#timber-plantation">Timber Plantation</a></li> <li><a href="services.html#training">Farming Training</a></li> <li><a href="green-farming.html">Sustainable Practices</a></li> </ul> </div>
+                 <div class="footer-column"> <h3>Get In Touch</h3> <p><i class="fas fa-map-marker-alt"></i> [Your Full Address Here], India</p> <p><i class="fas fa-phone"></i> <a href="tel:+91XXXXXXXXXX" style="color: #bbb;">+91 XXXXXXXXXX</a></p> <p><i class="fas fa-envelope"></i> <a href="mailto:info@growgreenfarming.com" style="color: #bbb;">info@growgreenfarming.com</a></p> <p><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 6:00 PM</p> </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Grow Green Farming. All Rights Reserved.</p>
+                <div class="footer-links"> <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Add active class to header nav link
+         document.addEventListener('DOMContentLoaded', function() {
+             const navLinks = document.querySelectorAll('header nav a');
+             const currentPage = 'contact.html'; // Specific page name
+             navLinks.forEach(link => {
+                 if (link.getAttribute('href') === currentPage) {
+                     link.classList.add('active');
+                 } else {
+                     link.classList.remove('active');
+                 }
+             });
+
+             // Optional: Smooth scroll for internal links (e.g., 'View on Map')
+             const internalLinks = document.querySelectorAll('a[href^="#"]');
+             internalLinks.forEach(link => {
+                 link.addEventListener('click', function(e) {
+                      const targetId = this.getAttribute('href');
+                      // Ensure it's not just a placeholder '#' link
+                      if (targetId && targetId.length > 1 && targetId.startsWith('#')) {
+                         e.preventDefault();
+                         const targetElement = document.querySelector(targetId);
+                         if (targetElement) {
+                             targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                         }
+                      }
+                 });
+             });
+
+
+             // Basic Form Status Handling (using mailto won't give real-time feedback)
+             // If using a proper backend, you'd use AJAX here.
+             // This is a simple placeholder for the mailto approach.
+             const form = document.getElementById('contact-form');
+             const formStatus = document.getElementById('form-status');
+             if (form && form.getAttribute('action').startsWith('mailto:')) {
+                 form.addEventListener('submit', function() {
+                     // Cannot track actual send status with mailto
+                     // Just provide feedback that the email client should open
+                     formStatus.textContent = 'Preparing message in your email client...';
+                     formStatus.style.color = '#333'; // Neutral color
+                     // Optionally clear message after a delay
+                     setTimeout(() => { formStatus.textContent = ''; }, 5000);
+                 });
+             }
+             // --- End Optional Form Status ---
+         });
+    </script>
+</body>
+</html>
